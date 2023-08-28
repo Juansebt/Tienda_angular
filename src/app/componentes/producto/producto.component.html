@@ -1,0 +1,62 @@
+<div class="container h-100 frmProducto">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-10 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-11 mt-2">
+                  <h3 class="fw-bold text-center">AGREGAR PRODUCTO</h3>
+                </div>
+                <div class="col-1">
+                  <a href="/productos" class="d-flex flex-row-reverse pb-2" style="text-decoration: none;">
+                    <button class="btn btn-outline-warning close-button p-2" aria-label="Close alert" type="button" data-close style="border: none;">
+                      <span aria-hidden="true" class="fw-bold h2">&times;</span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+              <div class="card-body p-5 text-center">
+                  <form id="frmProducto" [formGroup]="frmProducto" (ngSubmit)="agregarProducto(frmProducto.value)" method="post" enctype="multipart/form-data" class="was-validated">
+                      <div class="form-floating mb-4">
+                          <input type="number" name="txtCodigo" id="txtCodigo" formControlName="txtCodigo" class="form-control" required
+                              placeholder="Código del prodcuto" style="border-radius: 27px;">
+                          <label for="txtCodigo">Código del prodcuto</label>
+                      </div>
+                      <div class="form-floating mb-4">
+                          <input type="text" name="txtNombreP" id="txtNombreP" formControlName="txtNombreP" class="form-control" required
+                              placeholder="Nombre del producto" style="border-radius: 27px;">
+                          <label for="txtNombreP">Nombre del producto</label>
+                      </div>
+                      <div class="form-floating mb-4">
+                          <input type="number" name="txtPrecio" id="txtPrecio" formControlName="txtPrecio" class="form-control" required
+                              placeholder="Precio del producto" style="border-radius: 27px;">
+                          <label for="txtPrecio">Precio del producto</label>
+                      </div>
+                      <div class="form-floating mb-4">
+                          <select class="form-select" formControlName="cbCategoria" id="cbCategoria" name="cbCategoria" required style="border-radius: 27px;">
+                              <option value="">Seleccione</option>
+                              <option [value]="categoria.id" *ngFor="let categoria of listaCategorias">{{categoria.catNombre}}</option>
+                          </select>
+                            <label for="cbCategoria" class="form-label">Categoria del prodcuto</label>
+                      </div>
+                      <div class="form-floating mb-4">
+                          <input type="file" name="fileFoto" id="fileFoto" class="form-control" formControlName="fileFoto" accept=".jpg" accept=".jpg" placeholder="Cargar foto" (change)="onFileSelected($event)" style="border-radius: 27px; padding-top: 30px;">
+                          <label for="fileFoto">Cargar foto</label>
+                      </div>
+                      <div class="text-center">
+                          <img id="imagenProducto" [src]="rutaFoto" alt="" width="100" height="100">
+                      </div>
+                      <hr>
+                      <div class="mt-5">
+                          <button class="btn btn-success rounded-pill mb-2 fw-bold" style="letter-spacing: 2px;">AGREGAR</button>
+                          <!-- <a href="/productos" class="ml-2" >
+                            <button type="button" class="btn btn-warning rounded-pill ml-2 fw-bold" style="letter-spacing: 2px;">Cancelar</button>
+                          </a> -->
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
